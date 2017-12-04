@@ -86,7 +86,10 @@ checkTotalTask(Side1, Side2, Tasks) :-
 	SideTasksSorted = SortedTasks.
 
 // Checking if two sets are unique.
-uniqueSets.
+uniqueSets([], _).
+uniqueSets([H|Set1], Set2) :-
+	not .member(H, Set2) &
+	uniqueSets(Set1, Set2).
 
 // I know when a task is individual rational.
 indiRatio.
