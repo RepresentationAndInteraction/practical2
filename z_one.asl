@@ -78,23 +78,23 @@ validDistribution(OneSide,OtherSide) :-
 	checkTotalTask(OneSide,OtherSide,[b,c,d,e,f]) & // Adjust [b,c,d,e,f] with a totalTask belief later on in the assignment.
 	uniqueSets(OneSide,OtherSide).
 
-// Checking if the two task sets are indeed the total task. 
-checkTotalTask(...) // enter your code here.
+// Checking if the two task sets are indeed the total task.
+checkTotalTask.
 
-// Checking if two sets are unique. 
-uniqueSets(...) // enter your code here.
+// Checking if two sets are unique.
+uniqueSets.
 
 // I know when a task is individual rational.
-indiRatio(...) // enter your code here.
+indiRatio.
 
 // I know when a deal is pareto optimal:
-paretoOptimal(...) // Enter your code here. Consider adding more functions to
-// solve this problem. For example, given a task, which addresses will the other agent have to do?
+paretoOptimal.
+// Consider adding more functions to solve this problem. For example, given a task, which addresses will the other agent have to do?
 // Hint: .findall function might be useful here. (See below for details)
 
 // I know what a deal I can offer up for negotiations, is like.
 // If you want to check if you did a part correct, for example, validDistribution,
-// comment the other parts out. 
+// comment the other parts out.
 goodDeal([MySide,TheirSide]) :-
 	cost(MySide,_) &
 	cost(TheirSide,_) &
@@ -103,8 +103,8 @@ goodDeal([MySide,TheirSide]) :-
 	theirOriginalTask(TOT) & // The agent should have received this info from the other agent.
 	indiRatio(MySide,OT) & // I am not going to consider deals worse than the conflict deal.
 	indiRatio(TheirSide,TOT) & // The other agent is always going to refuse deals worse than the conflict deal. No point in considering them.
-	paretoOptimal(MySide,TheirSide). 
-	
+	paretoOptimal(MySide,TheirSide).
+
 // I can find all possible deals for negotiations.
 setOfDeals(SetOfDeals) :-
 	.findall(Deal, goodDeal(Deal),SetOfDeals).
