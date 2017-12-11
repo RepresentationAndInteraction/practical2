@@ -99,7 +99,10 @@ utility(MySide, TheirSide, MyUtility, TheirUtility) :-
 	TheirUtility = TheirOriginalCost - TheirNewCost.
 
 // I know when a task is individual rational.
-indiRatio.
+indiRatio(NewTasks, OldTasks) :-
+	cost(NewTasks, NewCost) &
+	cost(OldTasks, OldCost) &
+	NewCost <= OldCost.
 
 // I know when a deal is pareto optimal:
 paretoOptimal.
