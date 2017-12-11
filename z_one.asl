@@ -80,10 +80,7 @@ validDistribution(OneSide,OtherSide) :-
 
 // Checking if the two task sets are indeed the total task.
 checkTotalTask(Side1, Side2, Tasks) :-
-	.concat(Side1, Side2, SideTasks) &
-	.sort(SideTasks, SideTasksSorted) &
-	.sort(Tasks, SortedTasks) &
-	SideTasksSorted = SortedTasks.
+	.union(Side1, Side2, Tasks).
 
 // Checking if two sets are unique.
 uniqueSets(Set1, Set2) :-
