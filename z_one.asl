@@ -87,6 +87,17 @@ checkTotalTask(Side1, Side2, Tasks) :-
 uniqueSets(Set1, Set2) :-
 	.intersection(Set1, Set2, []).
 
+utility(MySide, TheirSide, MyUtility, TheirUtility) :-
+	validDistribution(MySide, TheirSide) &
+	originalTask(me, MyOriginalTasks) &
+	originalTask(other, TheirOriginalTasks) &
+	cost(MyOriginalTasks, MyOriginalCost) &
+	cost(TheirOriginalTasks, TheirOriginalCost) &
+	cost(MySide, MyNewCost) &
+	cost(TheirSide, TheirNewCost) &
+	MyUtility = MyOriginalCost - MyNewCost &
+	TheirUtility = TheirOriginalCost - TheirNewCost.
+
 // I know when a task is individual rational.
 indiRatio.
 
