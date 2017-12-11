@@ -69,7 +69,8 @@ cost([c,d,e,f],27).
 cost([b,c,d,e,f],27).
 
 // I remember my task set. During experiments, make sure to adjust the task.
-originalTask([d,e]).
+originalTask(me, [d, e]).
+originalTask(other, [b, c, f]).
 
 // Checking if two task sets are indeed valid re-distribution. This code requires
 // having the total task set (b,c,d,e,f for example). You will need a way for totalTask
