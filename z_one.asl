@@ -104,6 +104,9 @@ indiRatio(NewTasks, OldTasks) :-
 	cost(OldTasks, OldCost) &
 	NewCost <= OldCost.
 
+complementaryTasks(Tasks, ComplementaryTasks) :-
+	.difference([b, c, d, e, f], Tasks, ComplementaryTasks).
+
 // I know when a deal is pareto optimal:
 paretoOptimal.
 // Consider adding more functions to solve this problem. For example, given a task, which addresses will the other agent have to do?
