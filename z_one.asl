@@ -108,9 +108,14 @@ complementaryTasks(Tasks, ComplementaryTasks) :-
 	.difference([b, c, d, e, f], Tasks, ComplementaryTasks).
 
 // I know when a deal is pareto optimal:
-paretoOptimal.
-// Consider adding more functions to solve this problem. For example, given a task, which addresses will the other agent have to do?
-// Hint: .findall function might be useful here. (See below for details)
+paretoOptimal(MySide, TheirSide) :-
+	cost(MySide, MyCost) &
+	cost(TheirSide, TheirCost) &
+	.findall(Tasks, cost(Tasks, _), AllTasks) &
+	betterDeal(MyCost, TheirCost, AllTasks) &
+	.print("No deal is better for me") &
+	betterDeal(TheirCost, MyCost, AllTasks) &
+	.print("No deal is better for them").
 
 // I know what a deal I can offer up for negotiations, is like.
 // If you want to check if you did a part correct, for example, validDistribution,
