@@ -117,6 +117,22 @@ paretoOptimal(MySide, TheirSide) :-
 	betterDeal(TheirCost, MyCost, AllTasks) &
 	.print("No deal is better for them").
 
+betterDeal(_, _, []).
+
+betterDeal(MyCost, TheirCost, [Tasks|RemainingTasks]) :-
+	complementaryTasks(Tasks, ComplementaryTasks) &
+	cost(Tasks, MyNewCost) &
+	cost(ComplementaryTasks, TheirNewCost) &
+	MyNewCost < MyCost &
+	TheirNewCost > TheirCost &
+	betterDeal(MyCost, TheirCost, RemainingTasks).
+
+betterDeal(MyCost, TheirCost, [Tasks|RemainingTasks]) :-
+	complementaryTasks(Tasks, ComplementaryTasks) &
+	cost(Tasks, MyNewCost) &
+	MyNewCost >= MyCost &
+	betterDeal(MyCost, TheirCost, RemainingTasks).
+
 // I know what a deal I can offer up for negotiations, is like.
 // If you want to check if you did a part correct, for example, validDistribution,
 // comment the other parts out.
