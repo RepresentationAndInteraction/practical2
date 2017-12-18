@@ -113,9 +113,7 @@ paretoOptimal(MySide, TheirSide) :-
 	cost(TheirSide, TheirCost) &
 	.findall(Tasks, cost(Tasks, _), AllTasks) &
 	betterDeal(MyCost, TheirCost, AllTasks) &
-	.print("No deal is better for me") &
-	betterDeal(TheirCost, MyCost, AllTasks) &
-	.print("No deal is better for them").
+	betterDeal(TheirCost, MyCost, AllTasks).
 
 betterDeal(_, _, []).
 
