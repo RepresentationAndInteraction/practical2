@@ -138,10 +138,10 @@ goodDeal([MySide, TheirSide]) :-
 	cost(MySide, _) &
 	cost(TheirSide, _) &
 	validDistribution(MySide, TheirSide) &
-	originalTask(me, OT) &
-	originalTask(other, TOT) & // The agent should have received this info from the other agent.
-	indiRatio(MySide, OT) & // I am not going to consider deals worse than the conflict deal.
-	indiRatio(TheirSide, TOT) & // The other agent is always going to refuse deals worse than the conflict deal. No point in considering them.
+	originalTask(me, OriginalTask) &
+	originalTask(other, TheirOriginalTask) & // The agent should have received this info from the other agent.
+	indiRatio(MySide, OriginalTask) & // I am not going to consider deals worse than the conflict deal.
+	indiRatio(TheirSide, TheirOriginalTask) & // The other agent is always going to refuse deals worse than the conflict deal. No point in considering them.
 	paretoOptimal(MySide, TheirSide).
 
 // I can find all possible deals for negotiations.
