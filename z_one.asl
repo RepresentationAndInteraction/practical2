@@ -207,3 +207,7 @@ sortSet([_|OtherDeals], ToBeSorted, CurBestDeal, SetOfSortedDeals) :-
 	?sortedSet(Deals, SortedSet); // All good deals are now sorted.
 	.print("Agent 1 offers following deals ", SortedSet);
 	!getBetterDeal(SortedSet).
+
++!getBetterDeal([]) : true
+	<-
+	.print("Negotation set is empty.").
