@@ -170,13 +170,13 @@ sortSet([], ToBeSortedDeals, Deal, [X|Y]) :-
 sortSet([Deal|OtherDeals], ToBeSorted, [], SetOfSortedDeals) :-
 	sortSet(OtherDeals, ToBeSorted, Deal, SetOfSortedDeals).
 // We found a deal with a lower cost: remembering it so we can compare it with the deals after it.
-sortSet([[MySide, TheirSide]|OtherDeals], ToBeSorted, [CurMyHigh, CurTheirHigh], SetOfSortedDeals) :-
+sortSet([[MySide, TheirSide]|OtherDeals], ToBeSorted, [CurMyHigh, _], SetOfSortedDeals) :-
 	cost(MySide, MyCheckCost) &
 	cost(CurMyHigh, CurMyCost) &
 	MyCheckCost < CurMyCost &
 	sortSet(OtherDeals, ToBeSorted, [MySide, TheirSide], SetOfSortedDeals).
 // No new deal with a lower cost, so our current assumed best remains the best for now.
-sortSet([[MySide, TheirSide]|OtherDeals], ToBeSorted, CurBestDeal, SetOfSortedDeals) :-
+sortSet([_|OtherDeals], ToBeSorted, CurBestDeal, SetOfSortedDeals) :-
 	sortSet(OtherDeals, ToBeSorted, CurBestDeal, SetOfSortedDeals).
 
 /* Initial goals */
@@ -200,7 +200,7 @@ sortSet([[MySide, TheirSide]|OtherDeals], ToBeSorted, CurBestDeal, SetOfSortedDe
 +!getBetterDeal
 	: not originalTask(other, _)
 	<-
-	.send(z_two, askOne, originalTask(me, TheirTask), originalTask(me, Answer)); // Asking the other agent what their original task is.
+	.send(z_two, askOne, originalTask(me, _), originalTask(me, Answer)); // Asking the other agent what their original task is.
 	+originalTask(other, Answer);
 	.print("Agent 2 told Agent 1 their task was ", Answer);
 	?setOfDeals(Deals); // Finding all good deals, but they are unsorted.
