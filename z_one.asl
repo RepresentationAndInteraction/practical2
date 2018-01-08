@@ -200,7 +200,7 @@ sortSet([[MySide, TheirSide]|OtherDeals], ToBeSorted, CurBestDeal, SetOfSortedDe
 +!getBetterDeal
 	: not originalTask(other, _)
 	<-
-	.send(z_two, askOne, originalTask(TheirTask), originalTask(Answer)); // Asking the other agent what their original task is.
+	.send(z_two, askOne, originalTask(me, TheirTask), originalTask(me, Answer)); // Asking the other agent what their original task is.
 	+originalTask(other, Answer);
 	.print("Agent 2 told Agent 1 their task was ", Answer);
 	?setOfDeals(Deals); // Finding all good deals, but they are unsorted.
