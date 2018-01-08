@@ -206,5 +206,4 @@ sortSet([_|OtherDeals], ToBeSorted, CurBestDeal, SetOfSortedDeals) :-
 	?setOfDeals(Deals); // Finding all good deals, but they are unsorted.
 	?sortedSet(Deals, SortedSet); // All good deals are now sorted.
 	.print("Agent 2 offers following deals ", SortedSet);
-	+theSetOfNegotiationDeals(SortedSet); // Remember the current negotiation deals.
-	!getBetterDeal.
+	!getBetterDeal(SortedSet).
