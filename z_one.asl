@@ -191,7 +191,7 @@ sortSet([_|OtherDeals], ToBeSorted, CurBestDeal, SetOfSortedDeals) :-
 
 // This function requires you to finish the beliefs the agent has. If you have completed
 // everything correctly, then you should see the following pop up:
-// Agent 1 offers following deals  [[[c, f], [b, d, e]], [[d], [b, c, e, f]], [[b, d], [c, e, f]], [[c, e, f], [b, d]], [[b, c, e, f], [d]]]
+// Agent 1 offers following deals [[[d], [b, c, e, f]], [[b, d], [c, e, f]], [[c, e, f], [b, d]], [[b, c, e, f], [d]], [[b, d, e], [c, f]]]
 // This is the negotiation set: you completed the first part of the assignment.
 
 // It is recommended to first finish negotiations when you get to this point. After,
