@@ -70,7 +70,6 @@ cost([b, c, d, e, f], 27).
 
 // I remember my task set. During experiments, make sure to adjust the task.
 originalTask(me, [b, c, f]).
-originalTask(other, [d, e]).
 
 // Checking if two task sets are indeed valid re-distribution. This code requires
 // having the total task set (b, c, d, e, f for example). You will need a way for totalTask
@@ -200,12 +199,10 @@ sortSet([[MySide, TheirSide]|OtherDeals], ToBeSorted, CurBestDeal, SetOfSortedDe
 // you will need to come back to this function to create a way to reason what the total
 // task set is given originalTask and theirOriginalTask, as well converse about the costs and remember these.
 +!getBetterDeal
-	: not theirOriginalTask(Task)
+	: not originalTask(other, _)
 	<-
 	.send(z_one, askOne, originalTask(TheirTask), originalTask(Answer)); // Asking the other agent what their original task is.
-	// Note that here, we only want the Answer, whereas this function would normally return 'originalTask(Answer)[source: z_one]
-	// By specifying originalTask in the return, we can seperate Answer from the rest and make a new belief with it.
-	+theirOriginalTask(Answer);
+	+originalTask(other, Answer);
 	.print("Agent 1 told Agent 2 their task was ", Answer);
 	?setOfDeals(Deals); // Finding all good deals, but they are unsorted.
 	?sortedSet(Deals, SortedSet); // All good deals are now sorted.
