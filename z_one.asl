@@ -125,7 +125,6 @@ betterDeal(MyCost, TheirCost, [Tasks|RemainingTasks]) :-
 	betterDeal(MyCost, TheirCost, RemainingTasks).
 
 betterDeal(MyCost, TheirCost, [Tasks|RemainingTasks]) :-
-	complementaryTasks(Tasks, ComplementaryTasks) &
 	cost(Tasks, MyNewCost) &
 	MyNewCost >= MyCost &
 	betterDeal(MyCost, TheirCost, RemainingTasks).
