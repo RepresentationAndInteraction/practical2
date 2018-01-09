@@ -216,7 +216,7 @@ sortSet([_|OtherDeals], ToBeSorted, CurBestDeal, SetOfSortedDeals) :-
 	<-
 	.print("Round", Round, ": Propose deal ", MyProposal);
 	+proposal1(Round, MyProposal);
-	.send(z_two, askOne, proposal2(Round, _), proposal2(_, TheirProposal));
+	.send(z_two, askOne, proposal2(Round, _), proposal2(Round, TheirProposal));
 	.print("Round", Round, ": Agent 2 proposed deal ", TheirProposal);
 	!getBetterDeal(Round + 1, NegotiationSet).
 
