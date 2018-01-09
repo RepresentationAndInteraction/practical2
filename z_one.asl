@@ -210,7 +210,7 @@ sortSet([_|OtherDeals], ToBeSorted, CurBestDeal, SetOfSortedDeals) :-
 
 +!getBetterDeal(_, []) : true
 	<-
-	.print("Negotation set is empty.").
+	.print("Negotiation set is empty.").
 
 +!getBetterDeal(Round, [MyProposal|NegotiationSet]) : true
 	<-
