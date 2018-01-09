@@ -206,8 +206,20 @@ sortSet([_|OtherDeals], ToBeSorted, CurBestDeal, SetOfSortedDeals) :-
 	?setOfDeals(Deals); // Finding all good deals, but they are unsorted.
 	?sortedSet(Deals, SortedSet); // All good deals are now sorted.
 	.print("Agent 1 offers following deals ", SortedSet);
-	!getBetterDeal(SortedSet).
+	!getBetterDeal(1, SortedSet).
 
-+!getBetterDeal([]) : true
++!getBetterDeal(_, []) : true
 	<-
 	.print("Negotation set is empty.").
+
++!getBetterDeal(Round, [MyProposal|NegotiationSet]) : true
+	<-
+	.print("Round", Round, ": Propose deal ", MyProposal);
+	+proposal1(Round, MyProposal);
+	.send(z_two, askOne, proposal2(Round, _), proposal2(_, TheirProposal));
+	.print("Round", Round, ": Agent 2 proposed deal ", TheirProposal);
+	!getBetterDeal(Round + 1, NegotiationSet).
+
++!getBetterDeal(_, _) : true
+	<-
+	.print("Negotiations end.").
